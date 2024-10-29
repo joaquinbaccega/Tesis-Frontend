@@ -1,0 +1,8 @@
+/* Archivo styles.css */
+.bg-login {
+    background-image: url('../img/software1.jpg'); /* Cambia la ruta a la correcta */
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
+
+  }
+  

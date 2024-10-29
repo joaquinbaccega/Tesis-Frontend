@@ -1,0 +1,33 @@
+.main-section {
+  position: relative;
+  overflow: hidden; /* Asegura que no haya desbordamiento */
+  height: calc(100vh - 60px); /* Ajusta la altura restando el tamaño del Header */
+}
+  
+  .main-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/software1.jpg') center/cover no-repeat;
+    opacity: 0.3; /* Cambia la opacidad según sea necesario */
+    animation: slide 12s infinite; /* Controla la duración del efecto */
+  }
+  
+  @keyframes slide {
+    0% {
+      background-image: url('../img/software1.jpg');
+    }
+    33% {
+      background-image: url('../img/software2.jpg');
+    }
+    66% {
+      background-image: url('../img/software3.jpg');
+    }
+    100% {
+      background-image: url('../img/software1.jpg');
+    }
+  }
+  
