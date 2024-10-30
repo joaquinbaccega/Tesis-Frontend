@@ -7,7 +7,7 @@ import Sidebar from '../components/sideBar/Sidebar';
 
 const PatientInformation = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor: '#f5f5f5' }}>
       {/* Barra lateral */}
       <Sidebar />
 

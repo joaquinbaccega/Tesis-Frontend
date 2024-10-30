@@ -30,7 +30,7 @@ const Sidebar = () => {
       style={{
         backgroundColor: "#f3f4f6",
         color: "black",
-        height: "100vh",
+        height: "94vh",
         width: "16rem",
         padding: "1rem",
       }}
@@ -70,7 +70,9 @@ const Sidebar = () => {
             <ListItemIcon>
               <HomeIcon style={{ color: "black" }} />
             </ListItemIcon>
-            <ListItemText primary="Inicio" />
+            <ListItemText primary="Inicio" 
+              onClick={() => router.push("/inicio")}
+            />
           </ListItemButton>
         </ListItem>
 
