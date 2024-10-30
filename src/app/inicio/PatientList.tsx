@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ConfirmDialog from '../components/confirmationDialogs/deletePatientDialog';
+import { useRouter } from "next/navigation";
+import { ro } from 'date-fns/locale';
 
 const PatientList = ({ patients }: any) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -21,6 +23,7 @@ const PatientList = ({ patients }: any) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5); // Cantidad de registros por página
+  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>, patient: Array<any>) => {
     setAnchorEl(event.currentTarget);
@@ -88,6 +91,7 @@ const PatientList = ({ patients }: any) => {
                   <MenuItem onClick={() => console.log('Empezar la sesión')}>Empezar la sesión</MenuItem>
                   <MenuItem onClick={handleOpenDialog}>Eliminar</MenuItem>
                   <MenuItem onClick={() => console.log('Editar')}>Editar</MenuItem>
+                  <MenuItem onClick={() => router.push('/registerUser')}>Ver datos</MenuItem>
                 </Menu>
               </TableCell>
             </TableRow>
