@@ -19,7 +19,7 @@ export default function Login() {
     console.log("Contraseña:", password);
     
 
-    if(email === "baccegajoaquin@gmail.com" && password === "123456") {
+    if(email === "123456@gmail.com" && password === "123456") {
       alert("Sesión iniciada con éxito");
       router.push("/inicio")
     } else {
