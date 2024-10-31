@@ -76,7 +76,7 @@ const Sidebar = () => {
                 <HomeIcon style={{ color: "black" }} />
               </ListItemIcon>
               <ListItemText primary="Inicio" 
-                onClick={() => router.push("/inicio")}
+                onClick={() => router.push("/")}
               />
             </ListItemButton>
           </ListItem>
@@ -97,7 +97,7 @@ const Sidebar = () => {
             <List component="div" disablePadding style={{ marginLeft: "1rem" }}>
               <ListItem disablePadding>
                 <ListItemButton>
-                  <ListItemText primary="Listado de pacientes" />
+                  <ListItemText primary="Listado de pacientes" onClick={() => router.push("/inicio")} />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>

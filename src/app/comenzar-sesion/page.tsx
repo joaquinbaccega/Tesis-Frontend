@@ -9,66 +9,66 @@ const sesiónStarted = () => {
 
     const currencies = [
         {
-          value: 'Futbol',
-          label: 'Futbol',
+            value: 'Futbol',
+            label: 'Futbol',
         },
         {
-          value: 'Golf',
-          label: 'Golf',
+            value: 'Golf',
+            label: 'Golf',
         },
         {
-          value: 'Rugby',
-          label: 'Rugby',
+            value: 'Rugby',
+            label: 'Rugby',
         },
         {
-          value: 'Voleibol',
-          label: 'Voleibol',
+            value: 'Voleibol',
+            label: 'Voleibol',
         },
         {
-          value: 'Basketball',
-          label: 'Basketball',
+            value: 'Basketball',
+            label: 'Basketball',
         },
         {
-          value: 'Tenis',
-          label: 'Tenis',
+            value: 'Tenis',
+            label: 'Tenis',
         },
         {
-          value: 'Fútbol',
-          label: 'Fútbol',
+            value: 'Fútbol',
+            label: 'Fútbol',
         },
         {
-          value: 'Cricket',
-          label: 'Cricket',
+            value: 'Cricket',
+            label: 'Cricket',
         },
         {
-          value: 'Hockey',
-          label: 'Hockey',
+            value: 'Hockey',
+            label: 'Hockey',
         },
         {
-          value: 'Football',
-          label: 'Football',
+            value: 'Football',
+            label: 'Football',
         },
-      ];
+    ];
 
-      const lapso = [
+    const lapso = [
         {
-          value: 'Dias',
-          label: 'Dias',
+            value: 'Minutos',
+            label: 'Minutos',
         },
         {
-          value: 'Horas',
-          label: 'Horas',
-          },
-        {
-          value: 'Minutos',
-          label: 'Minutos',
+            value: 'Horas',
+            label: 'Horas',
         },
         {
-          value: 'Semanas',
-          label: 'Semanas',
+            value: 'Dias',
+            label: 'Dias',
+        },
+        {
+            value: 'Semanas',
+            label: 'Semanas',
         },
 
-      ];
+    ];
     return (
         <Box sx={{ display: 'flex', backgroundColor: '#f5f5f5' }}>
             {/* Barra lateral */}
@@ -135,8 +135,7 @@ const sesiónStarted = () => {
                         <Typography variant="h6" gutterBottom style={{ color: "black", textAlign: 'start' }}>
                             Actividad fisica
                         </Typography>
-                        <TextField select sx={{ width: "180px" }} label="Actividad fisica
-">
+                        <TextField select sx={{ width: "180px" }} defaultValue={"caminar"}>
                             {currencies.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
@@ -150,7 +149,7 @@ const sesiónStarted = () => {
                         <Typography variant="h6" gutterBottom style={{ color: "black", textAlign: 'start' }}>
                             Tiempo dedicado por sesion
                         </Typography>
-                        <TextField type='number' label="1Hs" sx={{ width: "100%" }} />
+                        <TextField type='number' label="1Hs" sx={{ width: "50%" }} />
                     </Grid>
 
 
@@ -158,8 +157,8 @@ const sesiónStarted = () => {
                         <Typography variant="h6" gutterBottom style={{ color: "black", textAlign: 'start' }}>
                             Frecuencia de lapso
                         </Typography>
-                        <TextField select sx={{ width: "180px" }} label="Frecuencia de lapso">
-                            
+                        <TextField select sx={{ width: "180px" }} defaultValue={"semana"}>
+
                             {lapso.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
@@ -171,9 +170,9 @@ const sesiónStarted = () => {
 
                     <Grid item sx={{ marginRight: 'auto' }}>
                         <Typography variant="h6" gutterBottom style={{ color: "black", textAlign: 'start' }}>
-                            ¿Cuál es su edad?
+                            Cantidad de lapso
                         </Typography>
-                        <TextField type='number' sx={{ width: "auto" }} />
+                        <TextField type='number' sx={{ width: "150px" }} defaultValue={1} />
                     </Grid>
 
 
