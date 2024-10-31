@@ -88,7 +88,7 @@ const PatientList = ({ patients }: any) => {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}
                 >
-                  <MenuItem onClick={() => console.log('Empezar la sesión')}>Empezar la sesión</MenuItem>
+                  <MenuItem onClick={() => router.push('/comenzar-sesion')}>Empezar la sesión</MenuItem>
                   <MenuItem onClick={handleOpenDialog}>Eliminar</MenuItem>
                   <MenuItem onClick={() => console.log('Editar')}>Editar</MenuItem>
                   <MenuItem onClick={() => router.push('/registerUser')}>Ver datos</MenuItem>
