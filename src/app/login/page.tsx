@@ -1,52 +1,57 @@
-"use client"
-import { useState } from 'react';
-import '../../public/Styles/login.css';
+"use client";
+import { useState } from "react";
+import "../../public/Styles/login.css";
 import { useRouter } from "next/navigation";
-
 import { Button, TextField, Box } from "@mui/material";
+import { login } from "@/services/auth"; // ✅ Usamos la función login de auth.ts
 
 export default function Login() {
   const router = useRouter();
 
-  // Estado para almacenar los valores de los inputs
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // Estado para los inputs
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Estado para mostrar loading
+  const [error, setError] = useState(""); // Estado para errores
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (event:any) => {
-    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
-    console.log("Email:", email);
-    console.log("Contraseña:", password);
-    
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    setError(""); // Limpiar errores previos
+    setLoading(true); // Mostrar indicador de carga
 
-    if(email === "123456@gmail.com" && password === "123456") {
+    try {
+      const data = await login(email, password); // ✅ Usar la función login de auth.ts
+
+      // Guardar el token en localStorage
+      localStorage.setItem("token", data.token);
+
       alert("Sesión iniciada con éxito");
-      router.push("/inicio")
-    } else {
-      alert("Email o contraseña incorrectos");
+      router.push("/inicio"); // Redirigir a la página de inicio
+    } catch (error: any) {
+      setError(error.message || "Error en la autenticación");
+    } finally {
+      setLoading(false); // Ocultar indicador de carga
     }
-
-
-
   };
 
   return (
     <div className="flex h-screen">
       {/* Sección izquierda con la imagen */}
-      <div className="hidden md:flex w-1/2 bg-login">
-        {/* La imagen se aplicará como fondo y no afectará el tamaño del contenedor */}
-      </div>
+      <div className="hidden md:flex w-1/2 bg-login"></div>
 
       {/* Sección derecha con el formulario */}
       <div className="flex w-full md:w-1/2 justify-center items-center p-8 bg-gray-100">
         <Box
           component="form"
-          onSubmit={handleSubmit} // Manejar el evento de envío
-          sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px' }}
+          onSubmit={handleSubmit}
+          sx={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: "400px" }}
         >
-          <h2 className="text-2xl font-bold mb-6 text-black">Iniciar Sesión</h2> {/* Cambiar a text-black */}
+          <h2 className="text-2xl font-bold mb-6 text-black">Iniciar Sesión</h2>
 
-          {/* Campo de Email */}
+          {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+ 
+          {/* Campos de texto para email y contraseña */} 
           <TextField
             label="Email"
             variant="outlined"
@@ -54,11 +59,11 @@ export default function Login() {
             margin="normal"
             type="email"
             required
-            value={email} // Vincular el valor del input con el estado
-            onChange={(e) => setEmail(e.target.value)} // Actualizar el estado cuando cambie el input
+            value={email}  // ✅ Vinculado correctamente al estado
+            onChange={(e) => setEmail(e.target.value)} // ✅ Actualiza el estado correctamente
           />
 
-          {/* Campo de Contraseña */}
+          {/* Campo de contraseña */}
           <TextField
             label="Contraseña"
             variant="outlined"
@@ -66,8 +71,8 @@ export default function Login() {
             margin="normal"
             type="password"
             required
-            value={password} // Vincular el valor del input con el estado
-            onChange={(e) => setPassword(e.target.value)} // Actualizar el estado cuando cambie el input
+            value={password}  // ✅ Vinculado correctamente al estado
+            onChange={(e) => setPassword(e.target.value)} // ✅ Actualiza el estado correctamente
           />
 
           {/* Botón de Inicio de Sesión */}
@@ -75,9 +80,15 @@ export default function Login() {
             type="submit"
             variant="contained"
             fullWidth
-            sx={{ marginTop: 2, backgroundColor: 'black', color: 'white', '&:hover': { backgroundColor: 'gray' } }}
+            disabled={loading}
+            sx={{
+              marginTop: 2,
+              backgroundColor: "black",
+              color: "white",
+              "&:hover": { backgroundColor: "gray" },
+            }}
           >
-            Iniciar Sesión
+            {loading ? "Cargando..." : "Iniciar Sesión"}
           </Button>
         </Box>
       </div>
