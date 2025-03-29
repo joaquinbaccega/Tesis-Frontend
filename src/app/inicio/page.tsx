@@ -60,9 +60,8 @@ const App = () => {
 
       {/* Contenedor principal */}
       <Box display="flex" flex={1} bgcolor="grey.100">
-        <Divider orientation="vertical" flexItem />
 
-        <Container sx={{ padding: '24px' }}>
+        <Container sx={{ padding: '24px', color: 'black' }}>
           <Typography variant="h4" gutterBottom>
             Listado de pacientes
           </Typography>
