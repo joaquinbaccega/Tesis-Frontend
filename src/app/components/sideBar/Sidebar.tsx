@@ -117,11 +117,11 @@ const Sidebar = () => {
 
           {/* Opción Turnos */}
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => router.push("/calendar")}>
               <ListItemIcon>
                 <EventNoteIcon style={{ color: "black" }} />
               </ListItemIcon>
-              <ListItemText primary="Turnos" />
+              <ListItemText primary="Calendario" />
             </ListItemButton>
           </ListItem>
         </List>

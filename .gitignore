@@ -1,4 +1,48 @@
+# Dependencias
 node_modules
 
+# Next.js
 .next
+out
+
+# Variables de entorno
 .env
+.env.*.local
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Directorios de producción
+dist
+build
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Coverage de tests
+coverage
+
+# Archivos temporales
+*.swp
+*.tmp
+*.temp
+
+# Otros
+*.log
+*.tgz
+
+# Archivos de lock alternativos
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
