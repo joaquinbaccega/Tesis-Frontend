@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://localhost:44311/api/1";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://localhost:44311/api/1.0";
 
 export const fetchData = async (endpoint: string, options = {}) => {
     try {
