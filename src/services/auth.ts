@@ -1,12 +1,16 @@
-import { fetchData } from "./api";
+// src/services/auth.ts
+import api from './api';
 
 export const login = async (email: string, password: string) => {
-    console.log("email", email);
-    console.log("password", password);
-    return fetchData("Login/authenticate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: email, password: password }), // Asegurar que el backend lo espera así
+  try {
+    const response = await api.post('/Login/authenticate', {
+      username: email,
+      password: password,
     });
-};
 
+    return response.data;
+  } catch (error: any) {
+    console.error('Error en login:', error);
+    throw error.response?.data?.message || 'Error al iniciar sesión';
+  }
+};
