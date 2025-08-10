@@ -1,26 +1,22 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://localhost:44311/api/1.0";
+// src/services/api.ts
+import axios from 'axios';
 
-export const fetchData = async (endpoint: string, options = {}) => {
-  try {
-    const response = await fetch(`${API_URL}/${endpoint}`, options);
-    let data = null;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://localhost:44311/api/1';
 
-    try {
-      data = await response.json();
-    } catch (_) {
-      // Ignore JSON parse errors for responses without body
-    }
+const api = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-    if (!response.ok) {
-      const message = data?.message || response.statusText || "Error en la API";
-      throw new Error(message);
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Error en la solicitud:", error);
-    throw error;
+// Interceptor opcional para incluir el token automáticamente
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-};
+  return config;
+});
+
+export default api;

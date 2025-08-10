@@ -78,7 +78,7 @@ const PatientList = ({ patients }: any) => {
               <TableCell>{patient.dni}</TableCell>
               <TableCell>{patient.nombre}</TableCell>
               <TableCell>{patient.apellido}</TableCell>
-              <TableCell>{patient.fecha}</TableCell>
+              <TableCell>{patient.fechaingreso}</TableCell>
               <TableCell>
                 <IconButton onClick={(event) => handleClick(event, patient)}>
                   <MoreVertIcon />
